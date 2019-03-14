@@ -1,3 +1,5 @@
+#eval()函数计算表达式的值
+
 class Solution(object):
     def clumsy(self, N):
         """
@@ -34,7 +36,19 @@ class Solution(object):
         elif j == 3:
             return (listN[i] * listN[i + 1]) // listN[i + 2]
 
-if __name__ == "__main__":
-    N = 10
-    var = Solution()
-    print(var.clumsy(N))
+
+class Solution(object):
+    def clumsy(self, N):
+        """
+        :type N: int
+        :rtype: int
+        """
+        s = []
+        o = ['*', '//', '+', '-']
+        k = 0
+        for i in range(N, 0, -1):
+            s.append(str(i))
+            s.append(o[k])
+            k = (k + 1) % 4
+        s.pop()
+        return eval(''.join(s))
