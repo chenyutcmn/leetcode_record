@@ -1,4 +1,5 @@
 #9次提交才做对，lzzscl ffffffffff**k
+#节点入栈后指针马上移动。注意处理链表尾节点的next域
 
 # Definition for singly-linked list.
 # class ListNode:
@@ -8,11 +9,12 @@
 
 class Solution:
     def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
+        #空链表返回空
         if not head:
             return head
-        temp = head
-        headtemp = None
-        headtag = 0
+        temp = head         #浮动指针
+        headtemp = None     #头节点暂存
+        headtag = 0         #头节点标记
         mydeque = collections.deque()
         i = 0
         while head:
@@ -38,5 +40,6 @@ class Solution:
                 else:
                     temp.next = mydeque.popleft()
                     temp = temp.next
+        #尾节点指向空
         temp.next = None
         return headtemp
