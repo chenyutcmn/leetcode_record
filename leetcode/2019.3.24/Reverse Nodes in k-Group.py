@@ -2,10 +2,11 @@
 #节点入栈后指针马上移动。注意处理链表尾节点的next域
 
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+import collections
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 class Solution:
     def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
