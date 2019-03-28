@@ -1,3 +1,9 @@
+#不带返回值的算法不适用递归
+#思路正确，但是换个角度问题会更明了
+#从后向前扫描找到第一个V型结构点
+
+
+#原始算法从前往后
 class Solution:
     def nextPermutation(self, nums: List[int]) -> None:
         """
@@ -39,6 +45,40 @@ class Solution:
     def findIndx(self , nums):
         temp = nums[0]
         for i in range(1 , len(nums) - 1):
-            if num[i] > temp and temp > nums[i + 1]:
+            if nums[i] > temp and temp > nums[i + 1]:
                 return i
         return len(nums) - 1
+
+#改进型，从后往前扫描，需要考虑的分支只有一条
+#JAVA描述
+public class Solution {
+    public void nextPermutation(int[] nums) {
+        int i = nums.length - 2;
+        while (i >= 0 && nums[i + 1] <= nums[i]) {
+            i--;
+        }
+        if (i >= 0) {
+            int j = nums.length - 1;
+            while (j >= 0 && nums[j] <= nums[i]) {
+                j--;
+            }
+            swap(nums, i, j);
+        }
+        reverse(nums, i + 1);
+    }
+
+    private void reverse(int[] nums, int start) {
+        int i = start, j = nums.length - 1;
+        while (i < j) {
+            swap(nums, i, j);
+            i++;
+            j--;
+        }
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}
