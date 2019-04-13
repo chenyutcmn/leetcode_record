@@ -7,7 +7,6 @@ def combinationSum2(scandidates, target):
         for j in range(target - i, 0, -1):
             table[i + j] |= {elt + (i,) for elt in table[j]}
         table[i].add((i,))
-    print(table[27])
     return map(list, table[target])
 
 
