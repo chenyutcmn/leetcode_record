@@ -1,6 +1,6 @@
 #思路一：堆排序输出，超时
 #思路二：向大佬学习，orz
-
+# 先确定解空间范围
 class Solution:
     def firstMissingPositive(self, nums) -> int:
         print(nums)
